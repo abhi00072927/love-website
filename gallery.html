@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Big Love Website - Celebrate Love in 3D</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #3b0a45;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+    }
+    nav a {
+      color: #7f1d1d;
+    }
+    nav a:hover {
+      color: #db2777;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
+      animation-duration: 1s;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #three-canvas-heart {
+      width: 100vw;
+      height: 60vh;
+      display: block;
+      margin: 0 auto;
+    }
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(123, 31, 162, 0.5);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-start min-h-screen p-6 space-y-24">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="text-3xl font-extrabold hover:text-pink-600 transition">Big Love</a>
+      <ul class="flex space-x-8 font-semibold text-lg">
+        <li><a href="#home" class="hover:text-pink-600 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-pink-600 transition">About Love</a></li>
+        <li><a href="#gallery" class="hover:text-pink-600 transition">Gallery</a></li>
+        <li><a href="#quotes" class="hover:text-pink-600 transition">Quotes</a></li>
+        <li><a href="#contact" class="hover:text-pink-600 transition">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="w-full flex flex-col items-center justify-center pt-28 fade-in" style="animation-delay: 0.2s;">
+    <h1 class="text-6xl font-extrabold mb-6 text-center drop-shadow-lg max-w-5xl">
+      Celebrate Love in All Its Beauty
+    </h1>
+    <p class="text-xl max-w-4xl text-center mb-8 drop-shadow-md">
+      Dive into a world of passion, connection, and heartfelt moments.<br />
+      Experience love like never before with stunning visuals and immersive 3D art.
+    </p>
+    <canvas id="three-canvas-heart" class="rounded-lg shadow-lg"></canvas>
+  </section>
+
+  <!-- About Love Section -->
+  <section id="about" class="max-w-5xl text-center px-6 fade-in" style="animation-delay: 0.4s;">
+    <h2 class="text-5xl font-bold mb-8">About Love</h2>
+    <p class="text-lg mb-6 max-w-3xl mx-auto leading-relaxed">
+      Love is the most powerful force in the universe. It connects souls, inspires art, and transforms lives.<br />
+      This website is dedicated to celebrating love in all its forms — romantic, familial, and self-love.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg" alt="Couple holding hands" class="w-full h-64 object-cover" />
+      </div>
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Heart shaped balloons" class="w-full h-64 object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="max-w-6xl px-6 fade-in" style="animation-delay: 0.6s;">
+    <h2 class="text-5xl font-bold mb-8 text-center">Love Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg" alt="Couple holding hands" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+      <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Heart shaped balloons" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+      <img src="https://images.pexels.com/photos/256737/pexels-photo-256737.jpeg" alt="Romantic sunset" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+      <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg" alt="Couple holding hands" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+      <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Heart shaped balloons" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+      <img src="https://images.pexels.com/photos/256737/pexels-photo-256737.jpeg" alt="Romantic sunset" class="rounded-lg shadow-lg object-cover h-64 w-full" />
+    </div>
+  </section>
+
+  <!-- Quotes Section -->
+  <section id="quotes" class="max-w-4xl text-center px-6 fade-in" style="animation-delay: 0.8s;">
+    <h2 class="text-5xl font-bold mb-8">Love Quotes</h2>
+    <div class="space-y-8 text-xl italic text-pink-700 font-semibold max-w-3xl mx-auto">
+      <p>"Love is composed of a single soul inhabiting two bodies." – Aristotle</p>
+      <p>"Where there is love there is life." – Mahatma Gandhi</p>
+      <p>"To love and be loved is to feel the sun from both sides." – David Viscott</p>
+      <p>"Love recognizes no barriers." – Maya Angelou</p>
+      <p>"The best thing to hold onto in life is each other." – Audrey Hepburn</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-4xl text-center px-6 fade-in" style="animation-delay: 1s;">
+    <h2 class="text-5xl font-bold mb-6">Get in Touch</h2>
+    <p class="text-lg mb-4">
+      <i class="fas fa-envelope mr-2"></i> Email us: <a href="mailto:love@biglove.com" class="underline hover:text-pink-600">love@biglove.com</a>
+    </p>
+    <p class="text-lg mb-6">
+      <i class="fas fa-phone mr-2"></i> Call us: <a href="tel:+1234567890" class="underline hover:text-pink-600">+1 (234) 567-890</a>
+    </p>
+    <p class="italic text-pink-700 font-semibold">Spread love everywhere you go!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full bg-pink-600 py-6 mt-12 text-center text-white font-semibold">
+    &copy; 2024 Big Love Website. All rights reserved.
+  </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    function handleFadeIn() {
+      const fadeEls = document.querySelectorAll('.fade-in');
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', handleFadeIn);
+    window.addEventListener('load', handleFadeIn);
+
+    // Three.js 3D rotating heart
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas-heart'), antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+    renderer.setClearColor(0x000000, 0);
+
+    // Heart shape geometry
+    const x = 0, y = 0;
+    const heartShape = new THREE.Shape();
+    heartShape.moveTo(x + 0, y + 0);
+    heartShape.bezierCurveTo(x + 0, y + 0, x - 1, y + 1.5, x - 1, y + 3);
+    heartShape.bezierCurveTo(x - 1, y + 5, x + 1, y + 7, x + 3, y + 7);
+    heartShape.bezierCurveTo(x + 5, y + 7, x + 7, y + 5, x + 7, y + 3);
+    heartShape.bezierCurveTo(x + 7, y + 1.5, x + 6, y + 0, x + 3, y + 0);
+    heartShape.bezierCurveTo(x + 2, y + 0, x + 1, y + 0, x + 0, y + 0);
+
+    const extrudeSettings = {
+      depth: 1,
+      bevelEnabled: true,
+      bevelSegments: 2,
+      steps: 2,
+      bevelSize: 0.5,
+      bevelThickness: 0.5
+    };
+
+    const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+    const material = new THREE.MeshStandardMaterial({ color: 0xff4d6d, roughness: 0.4, metalness: 0.7 });
+    const heartMesh = new THREE.Mesh(geometry, material);
+    heartMesh.rotation.x = Math.PI;
+    heartMesh.position.set(0, -2, 0);
+    scene.add(heartMesh);
+
+    // Lights
+    const pointLight = new THREE.PointLight(0xff4d6d, 1);
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
+
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+
+    camera.position.z = 10;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      heartMesh.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+    });
+  </script>
+</body>
+</html>
